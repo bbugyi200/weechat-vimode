@@ -793,11 +793,17 @@ VI_KEYS = {'j': "/window scroll_down",
            'K': "/buffer -1",
            'gT': "/buffer +1",
            'J': "/buffer +1",
+           'g0': "/buffer 1",
            'r': key_r,
            'R': key_R,
            '~': key_tilda,
            'nt': "/bar scroll nicklist * -100%",
            'nT': "/bar scroll nicklist * +100%",
+           ',b': "/bar toggle buddylist",
+           ',n': "/bar toggle nicklist",
+           '\x01O': "/input jump_previously_visited_buffer",
+           '\x01I': "/input jump_next_visited_buffer",
+           '\x01G': "i/go ",
            '\x01P': "/input history_global_previous",
            '\x01N': "/input history_global_next",
            '\x01[[A': "/input history_previous",
@@ -837,7 +843,7 @@ VI_KEYS = {'j': "/window scroll_down",
            '\x01Wv': "/window splitv",
            '\x01Wq': "/window merge",
            ';': key_semicolon,
-           ',': key_comma}
+           '\\': key_comma}
 
 # Add alt-j<number> bindings.
 for i in range(10, 99):
