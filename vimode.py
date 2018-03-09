@@ -177,7 +177,7 @@ def operator_base(buf, input_line, pos1, pos2, overwrite):
     # Print the text the operator should go over.
     weechat.prnt("", "Selection: %s" % input_line[start:end])
 
-def motion_base(input_line, cur, count):
+def motion_base(input_line, cur, count):  # noqa
     """Motion method example.
 
     Args:
@@ -207,7 +207,7 @@ def motion_base(input_line, cur, count):
     # This motion is exclusive, so overwrite is False.
     return cur + pos, False
 
-def key_base(buf, input_line, cur, count):
+def key_base(buf, input_line, cur, count):  # noqa
     """Key method example.
 
     Args:
@@ -251,7 +251,7 @@ def operator_d(buf, input_line, pos1, pos2, overwrite=False):
     weechat.buffer_set(buf, "input", input_line)
     set_cur(buf, input_line, pos1)
 
-def operator_c(buf, input_line, pos1, pos2, overwrite=False):
+def operator_c(buf, input_line, pos1, pos2, overwrite=False):  # noqa
     """Delete text from `pos1` to `pos2` from the input and enter Insert mode.
 
     If `overwrite` is set to True, the character at the cursor's new position
@@ -263,7 +263,7 @@ def operator_c(buf, input_line, pos1, pos2, overwrite=False):
     operator_d(buf, input_line, pos1, pos2, overwrite)
     set_mode("INSERT")
 
-def operator_y(buf, input_line, pos1, pos2, _):
+def operator_y(buf, input_line, pos1, pos2, _):  # noqa
     """Yank text from `pos1` to `pos2` from the input line.
 
     See Also:
@@ -287,7 +287,7 @@ def motion_0(input_line, cur, count):
     """
     return 0, False, False
 
-def motion_w(input_line, cur, count):
+def motion_w(input_line, cur, count):  # noqa
     """Go `count` words forward and return position.
 
     See Also:
@@ -298,7 +298,7 @@ def motion_w(input_line, cur, count):
         return len(input_line), False, False
     return cur + pos, False, False
 
-def motion_W(input_line, cur, count):
+def motion_W(input_line, cur, count):  # noqa
     """Go `count` WORDS forward and return position.
 
     See Also:
@@ -309,7 +309,7 @@ def motion_W(input_line, cur, count):
         return len(input_line), False, False
     return cur + pos, False, False
 
-def motion_e(input_line, cur, count):
+def motion_e(input_line, cur, count):  # noqa
     """Go to the end of `count` words and return position.
 
     See Also:
@@ -339,7 +339,7 @@ def motion_e(input_line, cur, count):
             cur = pos + 1
     return cur, True, False
 
-def motion_E(input_line, cur, count):
+def motion_E(input_line, cur, count):  # noqa
     """Go to the end of `count` WORDS and return cusor position.
 
     See Also:
@@ -350,7 +350,7 @@ def motion_E(input_line, cur, count):
         return len(input_line), False, False
     return cur + pos, True, False
 
-def motion_b(input_line, cur, count):
+def motion_b(input_line, cur, count):  # noqa
     """Go `count` words backwards and return position.
 
     See Also:
@@ -361,7 +361,7 @@ def motion_b(input_line, cur, count):
     pos = len(input_line) - pos_inv - 1
     return pos, True, False
 
-def motion_B(input_line, cur, count):
+def motion_B(input_line, cur, count):  # noqa
     """Go `count` WORDS backwards and return position.
 
     See Also:
@@ -375,7 +375,7 @@ def motion_B(input_line, cur, count):
     pos = len(input_line) - (pos + new_cur + 1)
     return pos, True, False
 
-def motion_ge(input_line, cur, count):
+def motion_ge(input_line, cur, count):  # noqa
     """Go to end of `count` words backwards and return position.
 
     See Also:
@@ -386,7 +386,7 @@ def motion_ge(input_line, cur, count):
     pos = len(input_line) - pos_inv - 1
     return pos, True, False
 
-def motion_gE(input_line, cur, count):
+def motion_gE(input_line, cur, count):  # noqa
     """Go to end of `count` WORDS backwards and return position.
 
     See Also:
@@ -400,7 +400,7 @@ def motion_gE(input_line, cur, count):
     pos = len(input_line) - (pos + new_cur + 1)
     return pos, True, False
 
-def motion_h(input_line, cur, count):
+def motion_h(input_line, cur, count):  # noqa
     """Go `count` characters to the left and return position.
 
     See Also:
@@ -408,7 +408,7 @@ def motion_h(input_line, cur, count):
     """
     return max(0, cur - max(count, 1)), False, False
 
-def motion_l(input_line, cur, count):
+def motion_l(input_line, cur, count):  # noqa
     """Go `count` characters to the right and return position.
 
     See Also:
@@ -416,7 +416,7 @@ def motion_l(input_line, cur, count):
     """
     return cur + max(count, 1), False, False
 
-def motion_carret(input_line, cur, count):
+def motion_carret(input_line, cur, count):  # noqa
     """Go to first non-blank character of line and return position.
 
     See Also:
@@ -425,7 +425,7 @@ def motion_carret(input_line, cur, count):
     pos = get_pos(input_line, REGEX_MOTION_CARRET, 0)
     return pos, False, False
 
-def motion_dollar(input_line, cur, count):
+def motion_dollar(input_line, cur, count):  # noqa
     """Go to end of line and return position.
 
     See Also:
@@ -434,7 +434,7 @@ def motion_dollar(input_line, cur, count):
     pos = len(input_line)
     return pos, False, False
 
-def motion_f(input_line, cur, count):
+def motion_f(input_line, cur, count):  # noqa
     """Go to `count`'th occurence of character and return position.
 
     See Also:
@@ -442,7 +442,7 @@ def motion_f(input_line, cur, count):
     """
     return start_catching_keys(1, "cb_motion_f", input_line, cur, count)
 
-def cb_motion_f(update_last=True):
+def cb_motion_f(update_last=True):  # noqa
     """Callback for `motion_f()`.
 
     Args:
@@ -464,7 +464,7 @@ def cb_motion_f(update_last=True):
         last_search_motion = {'motion': "f", 'data': pattern}
     cb_key_combo_default(None, None, "")
 
-def motion_F(input_line, cur, count):
+def motion_F(input_line, cur, count):  # noqa
     """Go to `count`'th occurence of char to the right and return position.
 
     See Also:
@@ -472,7 +472,7 @@ def motion_F(input_line, cur, count):
     """
     return start_catching_keys(1, "cb_motion_F", input_line, cur, count)
 
-def cb_motion_F(update_last=True):
+def cb_motion_F(update_last=True):  # noqa
     """Callback for `motion_F()`.
 
     Args:
@@ -497,7 +497,7 @@ def cb_motion_F(update_last=True):
         last_search_motion = {'motion': "F", 'data': pattern}
     cb_key_combo_default(None, None, "")
 
-def motion_t(input_line, cur, count):
+def motion_t(input_line, cur, count):  # noqa
     """Go to `count`'th occurence of char and return position.
 
     The position returned is the position of the character to the left of char.
@@ -507,7 +507,7 @@ def motion_t(input_line, cur, count):
     """
     return start_catching_keys(1, "cb_motion_t", input_line, cur, count)
 
-def cb_motion_t(update_last=True):
+def cb_motion_t(update_last=True):  # noqa
     """Callback for `motion_t()`.
 
     Args:
@@ -533,7 +533,7 @@ def cb_motion_t(update_last=True):
         last_search_motion = {'motion': "t", 'data': pattern}
     cb_key_combo_default(None, None, "")
 
-def motion_T(input_line, cur, count):
+def motion_T(input_line, cur, count):  # noqa
     """Go to `count`'th occurence of char to the left and return position.
 
     The position returned is the position of the character to the right of
@@ -544,7 +544,7 @@ def motion_T(input_line, cur, count):
     """
     return start_catching_keys(1, "cb_motion_T", input_line, cur, count)
 
-def cb_motion_T(update_last=True):
+def cb_motion_T(update_last=True):  # noqa
     """Callback for `motion_T()`.
 
     Args:
@@ -584,7 +584,7 @@ def key_cc(buf, input_line, cur, count):
     weechat.command("", "/input delete_line")
     set_mode("INSERT")
 
-def key_C(buf, input_line, cur, count):
+def key_C(buf, input_line, cur, count):  # noqa
     """Delete from cursor to end of line and start Insert mode.
 
     See Also:
@@ -593,7 +593,7 @@ def key_C(buf, input_line, cur, count):
     weechat.command("", "/input delete_end_of_line")
     set_mode("INSERT")
 
-def key_yy(buf, input_line, cur, count):
+def key_yy(buf, input_line, cur, count):  # noqa
     """Yank line.
 
     See Also:
@@ -603,11 +603,11 @@ def key_yy(buf, input_line, cur, count):
                             stdin=subprocess.PIPE)
     proc.communicate(input=input_line)
 
-def key_p(buf, input_line, cur, count):
+def key_p(buf, input_line, cur, count):  # noqa
     """ Paste from system clipboard using xclip """
     weechat.hook_process("xclip -o", 10 * 1000, "cb_key_p", weechat.current_buffer())
 
-def key_i(buf, input_line, cur, count):
+def key_i(buf, input_line, cur, count):  # noqa
     """Start Insert mode.
 
     See Also:
@@ -615,7 +615,7 @@ def key_i(buf, input_line, cur, count):
     """
     set_mode("INSERT")
 
-def key_a(buf, input_line, cur, count):
+def key_a(buf, input_line, cur, count):  # noqa
     """Move cursor one character to the right and start Insert mode.
 
     See Also:
@@ -624,7 +624,7 @@ def key_a(buf, input_line, cur, count):
     set_cur(buf, input_line, cur + 1, False)
     set_mode("INSERT")
 
-def key_A(buf, input_line, cur, count):
+def key_A(buf, input_line, cur, count):  # noqa
     """Move cursor to end of line and start Insert mode.
 
     See Also:
@@ -633,7 +633,7 @@ def key_A(buf, input_line, cur, count):
     set_cur(buf, input_line, len(input_line), False)
     set_mode("INSERT")
 
-def key_I(buf, input_line, cur, count):
+def key_I(buf, input_line, cur, count):  # noqa
     """Move cursor to first non-blank character and start Insert mode.
 
     See Also:
@@ -643,7 +643,7 @@ def key_I(buf, input_line, cur, count):
     set_cur(buf, input_line, pos)
     set_mode("INSERT")
 
-def key_G(buf, input_line, cur, count):
+def key_G(buf, input_line, cur, count):  # noqa
     """Scroll to specified line or bottom of buffer.
 
     See Also:
@@ -656,7 +656,7 @@ def key_G(buf, input_line, cur, count):
     else:
         weechat.command("", "/window scroll_bottom")
 
-def key_r(buf, input_line, cur, count):
+def key_r(buf, input_line, cur, count):  # noqa
     """Replace `count` characters under the cursor.
 
     See Also:
@@ -664,7 +664,7 @@ def key_r(buf, input_line, cur, count):
     """
     start_catching_keys(1, "cb_key_r", input_line, cur, count, buf)
 
-def cb_key_r():
+def cb_key_r():  # noqa
     """Callback for `key_r()`.
 
     See Also:
@@ -683,7 +683,7 @@ def cb_key_r():
         set_cur(catching_keys_data['buf'], input_line, cur - 1)
     catching_keys_data = {'amount': 0}
 
-def key_R(buf, input_line, cur, count):
+def key_R(buf, input_line, cur, count):  # noqa
     """Start Replace mode.
 
     See Also:
@@ -691,7 +691,7 @@ def key_R(buf, input_line, cur, count):
     """
     set_mode("REPLACE")
 
-def key_tilda(buf, input_line, cur, count):
+def key_tilda(buf, input_line, cur, count):  # noqa
     """Switch the case of `count` characters under the cursor.
 
     See Also:
@@ -707,7 +707,7 @@ def key_tilda(buf, input_line, cur, count):
     weechat.buffer_set(buf, "input", input_line)
     set_cur(buf, input_line, cur)
 
-def key_alt_j(buf, input_line, cur, count):
+def key_alt_j(buf, input_line, cur, count):  # noqa
     """Go to WeeChat buffer.
 
     Called to preserve WeeChat's alt-j buffer switching.
@@ -720,7 +720,7 @@ def key_alt_j(buf, input_line, cur, count):
     """
     start_catching_keys(2, "cb_key_alt_j", input_line, cur, count)
 
-def cb_key_alt_j():
+def cb_key_alt_j():  # noqa
     """Callback for `key_alt_j()`.
 
     See Also:
@@ -730,7 +730,7 @@ def cb_key_alt_j():
     weechat.command("", "/buffer " + catching_keys_data['keys'])
     catching_keys_data = {'amount': 0}
 
-def key_semicolon(buf, input_line, cur, count, swap=False):
+def key_semicolon(buf, input_line, cur, count, swap=False):  # noqa
     """Repeat last f, t, F, T `count` times.
 
     Args:
@@ -757,7 +757,7 @@ def key_semicolon(buf, input_line, cur, count, swap=False):
     vi_buffer = motion
     globals()[func](False)
 
-def key_comma(buf, input_line, cur, count):
+def key_comma(buf, input_line, cur, count):  # noqa
     """Repeat last f, t, F, T in opposite direction `count` times.
 
     See Also:
@@ -870,7 +870,7 @@ def cb_key_pressed(data, signal, signal_data):
                            "{:f}".format(last_signal_time))
     return weechat.WEECHAT_RC_OK
 
-def cb_check_esc(data, remaining_calls):
+def cb_check_esc(data, remaining_calls):  # noqa
     """Check if the Esc key was pressed and change the mode accordingly."""
     global esc_pressed, vi_buffer, cmd_text, catching_keys_data
     if last_signal_time == float(data):
@@ -884,7 +884,7 @@ def cb_check_esc(data, remaining_calls):
         weechat.bar_item_update("vi_buffer")
     return weechat.WEECHAT_RC_OK
 
-def cb_key_combo_default(data, signal, signal_data):
+def cb_key_combo_default(data, signal, signal_data):  # noqa
     """Eat and handle key events when in Normal mode, if needed.
 
     The key_combo_default signal is sent when a key combo is pressed. For
@@ -1064,15 +1064,15 @@ def cb_vi_buffer(data, item, window):
     """Return the content of the vi buffer (pressed keys on hold)."""
     return vi_buffer
 
-def cb_cmd_text(data, item, window):
+def cb_cmd_text(data, item, window):  # noqa
     """Return the text of the command line."""
     return cmd_text
 
-def cb_mode_indicator(data, item, window):
+def cb_mode_indicator(data, item, window):  # noqa
     """Return the current mode (INSERT/NORMAL/REPLACE)."""
     return mode
 
-def cb_line_numbers(data, item, window):
+def cb_line_numbers(data, item, window):  # noqa
     """Fill the line numbers bar item."""
     bar_height = weechat.window_get_integer(window, "win_chat_height")
     content = ""
@@ -1083,7 +1083,7 @@ def cb_line_numbers(data, item, window):
 # Callbacks for the line numbers bar.
 # ...................................
 
-def cb_update_line_numbers(data, signal, signal_data):
+def cb_update_line_numbers(data, signal, signal_data):  # noqa
     """Call `cb_timer_update_line_numbers()` when switching buffers.
 
     A timer is required because the bar item is refreshed before the new buffer
@@ -1093,7 +1093,7 @@ def cb_update_line_numbers(data, signal, signal_data):
     weechat.hook_timer(10, 0, 1, "cb_timer_update_line_numbers", "")
     return weechat.WEECHAT_RC_OK
 
-def cb_timer_update_line_numbers(data, remaining_calls):
+def cb_timer_update_line_numbers(data, remaining_calls):  # noqa
     """Update the line numbers bar item."""
     weechat.bar_item_update("line_numbers")
     return weechat.WEECHAT_RC_OK
@@ -1200,14 +1200,14 @@ def cb_exec_cmd(data, remaining_calls):
             weechat.command("", "/{} {}".format(cmd, args))
     return weechat.WEECHAT_RC_OK
 
-def cb_vimode_go_to_normal(data, buf, args):
+def cb_vimode_go_to_normal(data, buf, args):  # noqa
     set_mode("NORMAL")
     return weechat.WEECHAT_RC_OK
 
 # Script commands.
 # ----------------
 
-def cb_vimode_cmd(data, buf, args):
+def cb_vimode_cmd(data, buf, args):  # noqa
     """Handle script commands (``/vimode <command>``)."""
     # ``/vimode`` or ``/vimode help``
     if not args or args == "help":
@@ -1284,7 +1284,7 @@ def get_pos(data, regex, cur, ignore_cur=False, count=0):
             pos = matches[0]
     return pos
 
-def set_cur(buf, input_line, pos, cap=True):
+def set_cur(buf, input_line, pos, cap=True):  # noqa
     """Set the cursor's position.
 
     Args:
@@ -1298,7 +1298,7 @@ def set_cur(buf, input_line, pos, cap=True):
         pos = min(pos, len(input_line) - 1)
     weechat.buffer_set(buf, "input_pos", str(pos))
 
-def start_catching_keys(amount, callback, input_line, cur, count, buf=None):
+def start_catching_keys(amount, callback, input_line, cur, count, buf=None):  # noqa
     """Start catching keys. Used for special commands (e.g. "f", "r").
 
     amount (int): amount of keys to catch.
@@ -1334,7 +1334,7 @@ def start_catching_keys(amount, callback, input_line, cur, count, buf=None):
                            'buf': buf})
     return cur, False, True
 
-def get_keys_and_count(combo):
+def get_keys_and_count(combo):  # noqa
     """Check if `combo` is a valid combo and extract keys/counts if so.
 
     Args:
@@ -1422,11 +1422,11 @@ def set_mode(arg):
         set_cur(buf, input_line, cur - 1, False)
     weechat.bar_item_update("mode_indicator")
 
-def print_warning(text):
+def print_warning(text):  # noqa
     """Print warning, in red, to the current buffer."""
     weechat.prnt("", ("%s[vimode.py] %s" % (weechat.color("red"), text)))
 
-def check_warnings():
+def check_warnings():  # noqa
     """Warn the user about problematic key bindings and tmux/screen."""
     user_warned = False
     # Warn the user about problematic key bindings that may conflict with
