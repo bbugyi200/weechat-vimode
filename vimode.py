@@ -20,7 +20,6 @@
 # Add vi/vim-like modes to WeeChat.
 #
 
-
 import csv
 import os
 import re
@@ -801,13 +800,16 @@ VI_KEYS = {'j': "/window scroll_down",
            'nT': "/bar scroll nicklist * +100%",
            ',b': "/bar toggle buddylist",
            ',n': "/bar toggle nicklist",
+           '\x01E': "i/fset -setnew",
+           '\x01B': "/fset -up",
+           '\x01F': "/fset -down",
            '\x01O': "/input jump_previously_visited_buffer",
            '\x01I': "/input jump_next_visited_buffer",
            '\x01G': "i/go ",
            '\x01P': "/input history_global_previous",
            '\x01N': "/input history_global_next",
-           '\x01[[A': "/input history_previous",
-           '\x01[[B': "/input history_next",
+           '\x01[[A': "/input history_global_next",
+           '\x01[[B': "/input history_global_previous",
            '\x01[[C': "/input move_next_char",
            '\x01[[D': "/input move_previous_char",
            '\x01[[H': "/input move_beginning_of_line",
