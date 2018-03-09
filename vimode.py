@@ -1003,7 +1003,13 @@ def cb_key_combo_default(data, signal, signal_data):
                 if (VI_KEYS[vi_keys] == "/input return" and
                         input_line.startswith("/script ")):
                     return weechat.WEECHAT_RC_OK
-                weechat.command("", VI_KEYS[vi_keys])
+
+                cmd = VI_KEYS[vi_keys]
+                if VI_KEYS[vi_keys][0] == 'i':
+                    set_mode("INSERT")
+                    cmd = VI_KEYS[vi_keys][1:]
+
+                weechat.command("", cmd)
                 current_cur = weechat.buffer_get_integer(buf, "input_pos")
                 set_cur(buf, input_line, current_cur)
         else:
